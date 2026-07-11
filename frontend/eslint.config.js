@@ -12,7 +12,9 @@ export default [
       sourceType: "module",
       globals: {
         document: "readonly",
+        FormData: "readonly",
         window: "readonly",
+        XMLHttpRequest: "readonly",
       },
       parserOptions: {
         ecmaFeatures: { jsx: true },

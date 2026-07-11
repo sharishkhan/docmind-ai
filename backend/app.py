@@ -1,12 +1,40 @@
-"""DocMind AI backend entry point.
-
-Backend APIs and document-processing logic will be added in a future milestone.
-"""
-
 from flask import Flask
+from flask_cors import CORS
+from werkzeug.exceptions import RequestEntityTooLarge
+
+from routes.upload import upload_bp
+from utils.config import Config
 
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    Config.ensure_directories()
+    CORS(
+        app,
+        resources={
+            r"/api/*": {
+                "origins": Config.CORS_ORIGINS,
+                "methods": ["POST", "OPTIONS"],
+                "allow_headers": ["Content-Type"],
+            }
+        },
+    )
+
+    app.register_blueprint(upload_bp, url_prefix="/api")
+
+    @app.errorhandler(RequestEntityTooLarge)
+    def handle_large_file(_error):
+        return {
+            "success": False,
+            "message": "File size exceeds the 50 MB limit.",
+        }, 413
+
+    return app
+
+
+app = create_app()
 
 
 if __name__ == "__main__":
