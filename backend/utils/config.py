@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -11,6 +12,9 @@ class Config:
     MAX_UPLOAD_SIZE_MB = 50
     MAX_CONTENT_LENGTH = MAX_UPLOAD_SIZE_MB * 1024 * 1024
     ALLOWED_EXTENSIONS = {"pdf"}
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+    SUMMARY_CHUNK_CHARACTER_LIMIT = 24000
 
     CORS_ORIGINS = [
         "http://127.0.0.1:5173",
