@@ -1,5 +1,14 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
 node_modules/
+
+# Production build
 dist/
+
+# Environment files
 .env
 .env.local
-npm-debug.log*
