@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, Clock3, FileText, Hash, Layers3, Type } from "lucide-react";
+import {
+  CheckCircle2,
+  Clock3,
+  FileText,
+  Hash,
+  Layers3,
+  Type,
+} from "lucide-react";
 import { Card } from "./ui/card";
 
 const stats = [
@@ -17,36 +24,44 @@ export default function UploadSuccessCard({ document }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
     >
-      <Card className="min-h-[22rem] p-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-xl">
+      <Card className="overflow-hidden p-8">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          {/* Left Section */}
+          <div>
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-300">
-              <CheckCircle2 className="h-9 w-9" aria-hidden="true" />
+              <CheckCircle2 className="h-9 w-9" />
             </div>
-            <h1 className="mt-6 text-3xl font-bold tracking-normal text-text sm:text-4xl">
+
+            <h1 className="mt-6 text-4xl font-bold text-text">
               Upload Successful
             </h1>
+
             <p className="mt-3 text-base leading-7 text-muted">
-              Your PDF was saved and text metadata was extracted successfully.
+              Your PDF was uploaded and processed successfully.
             </p>
-            <div className="mt-6 inline-flex rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-300">
-              Status: Ready for AI Processing
-            </div>
+
           </div>
 
-          <div className="grid w-full gap-3 lg:max-w-md">
+          {/* Right Section */}
+          <div className="space-y-3">
             {stats.map(({ label, key, icon: Icon }) => (
               <div
                 key={key}
-                className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/5 p-4"
+                className="rounded-xl border border-white/10 bg-white/5 p-4"
               >
-                <div className="flex min-w-0 items-center gap-3">
-                  <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
-                  <span className="text-sm text-muted">{label}</span>
+                <div className="flex items-start gap-3">
+                  <Icon className="mt-1 h-5 w-5 shrink-0 text-primary" />
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs uppercase tracking-wide text-muted">
+                      {label}
+                    </p>
+
+                    <p className="mt-1 break-all text-sm font-semibold text-text">
+                      {document[key]}
+                    </p>
+                  </div>
                 </div>
-                <span className="truncate text-right text-sm font-semibold text-text">
-                  {document[key]}
-                </span>
               </div>
             ))}
           </div>

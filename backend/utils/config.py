@@ -13,7 +13,7 @@ class Config:
     MAX_CONTENT_LENGTH = MAX_UPLOAD_SIZE_MB * 1024 * 1024
     ALLOWED_EXTENSIONS = {"pdf"}
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
     SUMMARY_CHUNK_CHARACTER_LIMIT = 24000
 
     CORS_ORIGINS = [

@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from werkzeug.exceptions import RequestEntityTooLarge
 
+from routes.chat import chat_bp
 from routes.summary import summary_bp
 from routes.upload import upload_bp
 from utils.config import Config
@@ -25,6 +26,7 @@ def create_app():
 
     app.register_blueprint(upload_bp, url_prefix="/api")
     app.register_blueprint(summary_bp, url_prefix="/api")
+    app.register_blueprint(chat_bp, url_prefix="/api")
 
     @app.errorhandler(RequestEntityTooLarge)
     def handle_large_file(_error):

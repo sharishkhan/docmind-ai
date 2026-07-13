@@ -11,8 +11,11 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
+        Blob: "readonly",
         document: "readonly",
+        fetch: "readonly",
         FormData: "readonly",
+        URL: "readonly",
         window: "readonly",
         XMLHttpRequest: "readonly",
       },
