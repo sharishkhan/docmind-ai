@@ -1,82 +1,36 @@
 # 🧠 DocMind AI
 
-### Intelligent AI-powered Research & Document Assistant
+An AI-powered document assistant that helps users understand lengthy PDF documents through intelligent summarization and conversational question answering.
 
-Upload PDFs • Generate Executive Summaries • Chat with Documents using Google Gemini
+🌐 **Live Demo:** https://docmind-ai-three.vercel.app/
 
 ---
 
 ## 📖 Overview
 
-DocMind AI is a modern AI-powered document assistant that enables users to upload PDF documents, extract metadata, generate AI-powered summaries, and interact with their documents through a conversational chat interface.
+DocMind AI is a full-stack web application that enables users to upload PDF documents, generate AI-powered summaries, extract important keywords, and interact with the document using natural language questions.
 
-The project combines **React**, **Flask**, and **Google Gemini** to create a fast and intuitive document analysis experience.
+The application is designed for students, researchers, and professionals who need to quickly understand large documents without reading every page.
 
 ---
 
 ## ✨ Features
 
-### 📄 Document Processing
-- Upload PDF documents (up to 50 MB)
-- Secure PDF validation
-- Automatic text extraction
-- Document metadata extraction
-- Reading time estimation
-
-### 🤖 AI Summary
-- Executive summary generation
-- Key points extraction
-- Keyword extraction
-- Regenerate summary
-- Download summary as `.txt`
-
-### 💬 AI Chat
-- Chat with uploaded PDFs
-- Suggested questions
-- Conversation memory
-- Context-aware answers
-- Markdown formatted responses
-
-### 🎨 User Experience
-- Modern responsive interface
-- Drag & Drop upload
-- Upload progress indicator
-- Animated transitions
-- Dark theme workspace
+- 📄 Upload PDF documents
+- 🤖 AI-generated document summaries
+- 📝 Key points extraction
+- 🔑 Automatic keyword extraction
+- 💬 Chat with uploaded PDF
+- 🧠 Conversation memory during chat session
+- 📊 Document metadata extraction
+- 📥 Download AI-generated summary
+- 🌐 Fully deployed web application
 
 ---
 
-# 🏗 Project Architecture
+## 🛠 Tech Stack
 
-```text
-                Upload PDF
-                     │
-                     ▼
-          PDF Validation & Storage
-                     │
-                     ▼
-        Text & Metadata Extraction
-             │               │
-             │               ▼
-             │        Document Metadata
-             │
-             ▼
-      Google Gemini AI
-      ┌──────────────┐
-      │              │
-      ▼              ▼
- AI Summary      AI Chat
-      │              │
-      └──────┬───────┘
-             ▼
-        User Workspace
-```
-
----
-
-# 🛠 Tech Stack
-
-## Frontend
+### Frontend
 
 - React
 - Vite
@@ -84,7 +38,7 @@ The project combines **React**, **Flask**, and **Google Gemini** to create a fas
 - Framer Motion
 - Lucide React
 
-## Backend
+### Backend
 
 - Flask
 - Flask-CORS
@@ -92,46 +46,40 @@ The project combines **React**, **Flask**, and **Google Gemini** to create a fas
 - Google Gemini API
 - Python
 
+### Deployment
+
+- Vercel (Frontend)
+- Render (Backend)
+
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
-```text
+```
 docmind-ai/
-│
-├── backend/
-│   ├── routes/
-│   │   ├── upload.py
-│   │   ├── summary.py
-│   │   └── chat.py
-│   │
-│   ├── services/
-│   │   ├── pdf_service.py
-│   │   ├── summary_service.py
-│   │   └── chat_service.py
-│   │
-│   ├── utils/
-│   ├── uploads/
-│   ├── app.py
-│   ├── requirements.txt
-│   └── .env.example
 │
 ├── frontend/
 │   ├── src/
 │   ├── public/
 │   ├── package.json
-│   ├── vite.config.js
-│   └── ...
+│   └── vercel.json
 │
-├── README.md
-└── .gitignore
+├── backend/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   ├── uploads/
+│   ├── app.py
+│   └── requirements.txt
+│
+└── README.md
 ```
 
 ---
 
-# 🚀 Installation
+## 🚀 Installation
 
-## Clone Repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/sharishkhan/docmind-ai.git
@@ -148,14 +96,26 @@ cd backend
 
 python -m venv venv
 
+# Windows
 venv\Scripts\activate
 
 pip install -r requirements.txt
+```
 
+Create a `.env` file inside the backend directory.
+
+```
+GEMINI_API_KEY=YOUR_API_KEY
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+Run backend
+
+```bash
 python app.py
 ```
 
-Backend runs on:
+Backend runs at
 
 ```
 http://127.0.0.1:5000
@@ -173,7 +133,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs on:
+Frontend runs at
 
 ```
 http://127.0.0.1:5173
@@ -181,64 +141,61 @@ http://127.0.0.1:5173
 
 ---
 
-# 🔑 Environment Variables
+## 📷 Application Workflow
 
-Create a `.env` file inside the `backend` directory.
-
-```env
-GEMINI_API_KEY=YOUR_API_KEY
-GEMINI_MODEL=gemini-2.5-flash
+```
+Upload PDF
+      │
+      ▼
+Extract Text
+      │
+      ▼
+Generate Summary
+      │
+      ▼
+Extract Keywords
+      │
+      ▼
+Chat with Document
+      │
+      ▼
+Download Summary
 ```
 
 ---
 
-# 📡 API Endpoints
+## 🎯 Use Cases
 
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| POST | `/api/upload` | Upload PDF |
-| POST | `/api/summary` | Generate AI Summary |
-| POST | `/api/chat` | Chat with uploaded document |
-
----
-
-# 🌟 Current Capabilities
-
-- ✅ PDF Upload
-- ✅ Metadata Extraction
-- ✅ AI Executive Summary
-- ✅ AI Chat
-- ✅ Suggested Questions
-- ✅ Conversation Memory
-- ✅ Summary Download
-- ✅ Responsive UI
+- Student study assistant
+- Research paper summarization
+- Quick document understanding
+- Educational note generation
+- PDF question answering
 
 ---
 
-# 🔮 Future Enhancements
+## 📌 Current Limitations
+
+- Supports one PDF at a time.
+- Supports text-based PDFs only.
+- Scanned/image PDFs require OCR.
+- Chat responses are based only on the uploaded document.
+
+---
+
+## 🔮 Future Enhancements
 
 - Retrieval-Augmented Generation (RAG)
-- Semantic Search with Vector Database
-- Multi-document Chat
-- OCR Support for Scanned PDFs
-- Citation-based Responses
-- Authentication & User Accounts
-- Cloud Storage Support
+- OCR support for scanned PDFs
+- Multi-document chat
+- AI-generated quizzes
+- Document insights dashboard
+- User authentication
+- Chat history persistence
 
 ---
 
-# 📸 Screenshots
-
-Screenshots will be added after deployment.
-
-- Landing Page
-- Upload Workspace
-- AI Summary
-- Chat Interface
-
----
-
-# 👩‍💻 Author
+## 👩‍💻 Author
 
 **Saharish Fatima Khan**
 
@@ -246,20 +203,14 @@ B.Tech CSE (Artificial Intelligence)
 
 Bhilai Institute of Technology, Durg
 
-**GitHub**
-
+GitHub:
 https://github.com/sharishkhan
 
-**LinkedIn**
-
+LinkedIn:
 https://www.linkedin.com/in/saharish-fatima-khan-91ab2a283/
 
 ---
 
-# 📜 License
+## 📄 License
 
-This project is developed for educational and research purposes.
-
----
-
-⭐ If you found this project useful, consider giving it a **star** on GitHub!
+This project is developed for academic and educational purposes.
